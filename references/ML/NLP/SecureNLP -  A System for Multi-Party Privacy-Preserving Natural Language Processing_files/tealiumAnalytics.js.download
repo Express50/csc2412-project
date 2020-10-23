@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-ca"
+      lang="en-ca">
+  <head>
+    <meta http-equiv="Content-Type"  content="text/html;charset=utf-8" />
+<META xmlns="http://www.w3.org/2000/12/p3pv1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <POLICY-REFERENCES>
+    <POLICY-REF about="http://library.utoronto.ca/w3c/p3p.xml">
+       <COOKIE-INCLUDE name="*" value="*" domain="*" path="*"/>
+    </POLICY-REF\\>
+ </POLICY-REFERENCES>
+</META>
+<title>my.access &mdash; University of Toronto Libraries Portal</title>
+    <!-- Internet Explorer CSS Fixes -->
+    <!--[if IE]>
+        <style type="text/css" media="all">@import url(http://discover.library.utoronto.ca/IEFixes.css);</style>
+    <![endif]-->
+
+    <link rel="author"
+          href="http://discover.library.utoronto.ca/author/lalondem"
+          title="Author information" />
+
+  <!--  <link rel="shortcut icon" type="image/x-icon"
+          href="http://main.library.utoronto.ca/favicon.ico" /> -->
+
+        <script language="javascript">
+        function openWin(winurl,winname,winfeatures) {
+        //This launches a new window and then
+        //focuses it if window.focus() is supported.
+        newwin = window.open(winurl,winname,winfeatures);
+        }
+        </script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://content.library.utoronto.ca/common/rwd/css/main.min.css" type="text/css">  
+  <script src="https://content.library.utoronto.ca/common/bootstrap/js/bootstrap.min.js"></script>  
+<script> 
+if (window.top !== window.self) window.top.location.replace(window.self.location.href); 
+</script>
+  </head>
+    <header role="header">
+        <div class="header-wrapper">
+            <a href="https://login.library.utoronto.ca/">
+                <img class="logo" src="/images/UTL-correct-white-logo.png" alt="utl home" class="logo img-responsive" border="0" alt="UTL home"/>
+                </a>
+        </div>
+    </header>
+    
+     <nav role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="http://www.library.utoronto.ca">
+                       <!--  blue logo 
+                       <img src="https://content.library.utoronto.ca/common/rwd/images/utl.png" alt="utl home" class="logo img-responsive" border="0" />
+                       -->
+                       
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav">
+
+                        <li class="research-main navbar-item"><a href="http://onesearch.library.utoronto.ca/research">Research</a>
+                        </li>
+                        <li class="services-main navbar-item"><a href="http://onesearch.library.utoronto.ca/services">Services</a>                     
+                        </li>
+                        <li class="visit-main navbar-item"><a href="http://onesearch.library.utoronto.ca/visit">Visit</a>
+                        </li> 
+                        </li>
+                        <li class="ask-main navbar-item"><a href="http://onesearch.library.utoronto.ca/ask">Ask</a>
+                        <li class="about-main navbar-item"><a href="http://onesearch.library.utoronto.ca/about">About</a>
+                        </li>
+
+                                    <li class="myaccount-main navbar-item"><a href="https://toroprod.library.utoronto.ca/uhtbin/cgisirsi/x/x/0/1/488/X/BLASTOFF/">My account</a>
+                        </li>
+                        <li class="uoft-main navbar-item dropdown"><a href="http://www.utoronto.ca">U of T</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+  <body>
+
+        <div class="container">
+        
+        
+       <h1>
+            Welcome to my.access -- please choose how you will connect
+        </h1>
+
+        <div>
+            <img src="images/crest_plone.gif" align="left" style="margin-right:5px; margin-bottom: 5px; position: relative; float: left; margin-top: 5px;">
+            <p>This resource is licensed for your use by the University of Toronto Libraries.
+             Off-campus access is available to current University of Toronto students, staff and faculty.</p>
+        </div>      
+
+        <div>       
+        <!--<p style="color:#900;"><strong>Internet Explorer 8</strong> users may have trouble using UTORid login. We are working to fix this issue. To check your browser version, choose <strong>About</strong> from the <strong>Help</strong> menu.</p>-->
+
+        <p><strong><a href='https://login.library.utoronto.ca/index.php/shib/auth?url=https://ieeexplore.ieee.org/assets/js/analytics/tealiumAnalytics.js?cv=20201020_000001'>Log in with your UTORid via University of Toronto Web Login</a></strong><br />
+        Use this option for <strong>single sign-on</strong> to my.access, UTORmail, and other university web services. <strong>For your privacy</strong> be sure to close your browser before leaving this work station.<br />
+        </p>        
+        
+        </div>
+        
+    <br clear="all">        
+        <div>
+
+        <p>⚠️ <strong> No UTORid?<br />
+        You can still</strong> <a href='https://login.library.utoronto.ca/index.php/ezproxy/reg_log?url=https://ieeexplore.ieee.org/assets/js/analytics/tealiumAnalytics.js?cv=20201020_000001'>log in with your library card or Tcard barcode and pin</a><br />
+        </p>
+        <!-- <p style="font-weight: bold; color: #990000;"> We're sorry: due to technical issues library card login authentication is currently not available.</p> --> 
+        <p>Questions? Please <a href="mailto:libraryhelp@utoronto.ca">ask us here</a></p>
+        
+        <!-- document content ends here-->
+        </div>      
+
+   
+
+</div>
+
+<div id="footer">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 footer-box">
+            <h3>Library links</h3>
+            <ul class="footer-menu">
+                <li><a href="http://www.library.utoronto.ca"> Library Home </a>
+                </li>
+                <li><a href="https://onesearch.library.utoronto.ca/"> Search </a>
+                </li>
+                <li><a href="http://toroprod.library.utoronto.ca/uhtbin/cgisirsi/x/x/0/1/488/X/BLASTOFF/?source=icon">Renew items and pay fines</a>
+                </li>
+                <li><a href="http://resource.library.utoronto.ca/hours/"> Library hours </a>
+                </li>
+                <li><a href="https://onesearch.library.utoronto.ca/ask/"> Ask </a>
+                </li>
+                <li><a href="https://onesearch.library.utoronto.ca/sitemap">Site map</a>
+                </li>
+                <li><a href="http://portal.utoronto.ca/">Portal</a>
+                </li>
+            </ul>
+        </div>
+        
+       <!--   <a class="hover-trans" href="#" id="feedback-button-jira"> Share your feedback</a>
+       Temporary fix to online resource problem form
+        -->
+       <a class="hover-trans" href=" https://onesearch.library.utoronto.ca/report-problem-online-resource-0" id="feedback-button-jira"> Report a problem</a>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 footer-box">
+            <h3>Libraries</h3>
+            <ul class="footer-menu">
+                <li><a href="https://onesearch.library.utoronto.ca/library-info/ROBARTS">Robarts</a>
+                </li>
+                <li><a href="https://gerstein.library.utoronto.ca/">Gerstein</a>
+                </li>
+                <li><a href="https://oise.library.utoronto.ca/">OISE</a>
+                </li>
+                <li><a href="https://engineering.library.utoronto.ca/">Engineering</a>
+                </li>
+                <li><a href="http://library.utm.utoronto.ca/">UT Mississauga Library</a>
+                </li>
+                <li><a href="http://utsc.library.utoronto.ca/">UT Scarborough Library</a>
+                </li>
+                <li><a href="http://www.utoronto.ca/welcome.html/">Information Commons</a>
+                </li>
+                <li><a href="https://onesearch.library.utoronto.ca/libraries">All libraries</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 footer-box">
+        
+            <h3>Contact</h3>
+            <p><a href="http://www.library.utoronto.ca">University of Toronto Libraries</a>
+                <br />130 St. George St.,Toronto, ON, M5S 1A5
+                <br /><a href="https://onesearch.library.utoronto.ca/question-form/">library.info@utoronto.ca</a>
+                <br />416-978-8450
+                <br /><a href="http://maps.google.ca/maps?f=q&source=s_q&hl=en&geocode=&q=130+St+George+St,+Toronto,+ON&sll=43.662749,-79.395962&sspn=0.012962,0.018454&ie=UTF8&z=17&iwloc=addr"> Map</a>
+                <br />About <a href="https://onesearch.library.utoronto.ca/university-toronto-libraries-and-online-accessibility">web accessibility</a>. Tell us about a <a href="https://accessibilityhelp.library.utoronto.ca/" id="access-help">web accessibility problem</a>.
+                <br />About <a href="https://onesearch.library.utoronto.ca/online-privacy-data-collection/">online privacy and data collection</a>.</p>
+            <p><span style="line-height: 1.538em;">© </span><a href="http://www.utoronto.ca/" style="line-height: 1.538em;">University of Toronto</a><span style="line-height: 1.538em;">. All rights reserved. Terms and conditions.</span>
+            </p>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 footer-box">
+            <h3>Connect with us</h3>
+            <ul class="footer-menu">
+                <li>
+                    <a href="http://twitter.com/uoftlibraries"><img alt="Follow us on twitter" src="https://onesearch.library.utoronto.ca/sites/all/themes/UTL_bootstrap/img/mediaicons/twitter.png" width="35" />Twitter</a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/channel/UC51D4EB9a8Egx-o6mCZodEQ"><img alt="Follow us on Youtube" src="https://onesearch.library.utoronto.ca/sites/all/themes/UTL_bootstrap/img/mediaicons/youtube.png" width="35" />YouTube</a>
+                </li>
+                <li>
+                    <a href="https://instagram.com/uoftlibraries/"><img alt="Follow us on Instagram" src="https://onesearch.library.utoronto.ca/sites/all/themes/UTL_bootstrap/img/mediaicons/instagram.png" width="35" />Instagram</a>
+                </li>
+                <li><a href="https://onesearch.library.utoronto.ca/social-media">more social media</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
