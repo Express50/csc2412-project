@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=3cm]{geometry}
+\usepackage{hyperref}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\title{CSC2412: Project Proposal}
+\author{Grigory Dorodnov \and David Landsman}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+With the advent of deep learning and attention-based transformer models, the field of natural
+language processing (NLP) is seeing an incredible improvement in the performance of language models
+for a variety of tasks, including information retrieval \cite{guo2016deep, macavaney2019cedr, zamani2018neural}, question answering systems \cite{dong2015question, santoro2017simple},
+machine translation \cite{cho2014learning, sutskever2014sequence, wu2016google} and much more. As applications of NLP begin to extend to many different areas
+which make use of highly sensitive and personal data
+such as healthcare \cite{zheng2019use}, finance 
+\cite{lewis2019fad_or_future} and personal messaging \cite{chee2009measuring}, 
+it is vital to consider aspects of security and privacy in deployed models.
+The main question we aim to address in this project is: 
+given the tools provided by differential privacy (DP), 
+are we able to balance the great performance of NLP models
+with a strong and robust approach to privacy, in order to ensure the privacy of personal data
+used to train and deploy these models?
+\\
+
+Our research goals for the project are: 
+(1) review and summarize literature for current approaches in DP language models and word embeddings;
+(2) analyze and compare performance of language models and word embeddings 
+(including neural network models and statistical models)
+for a specific task such as sentiment analysis or text classification,
+in the presence of classical differential privacy methods 
+(for neural models - private gradient descent, for statistical models - basic mechanisms such as Laplace noise); and
+(3) investigate novel ways to integrate differential privacy into language models and word embeddings
+to improve their performance in particular tasks.
+\\
+
+Differential privacy in NLP models is a relatively new area of research, 
+which is not yet supported by an abundant amount of articles.
+Much of the research in privacy-preserving NLP focuses on incorporating
+cryptographic techniques such as fully homomorphic encryption \cite{badawi2019privft} or
+secure multi-party computation \cite{9099258} into the training procedure, 
+which can lead to slower models, especially when training on large datasets.
+However, a decent growth of interest in applying DP
+methods to preserve privacy in NLP can be observed in recent years.
+In the following we highlight some important and interesting papers in this area.
+\textit{Fernandes~et~al.} \cite{fernandes2018author, fernandes2019generalised} focus their attention on the
+problem of authorship obfusctaion and make use of the Laplace mechanism to introduce privacy in their model.
+\textit{Li~et~al.} \cite{li2018towards} explore an alternative method to achieve
+authorship obfuscation by learning text representations that are invariant to author characteristics.
+\textit{Pan~et~al.} \cite{pan2020privacy} design and evaluate novel privacy attacks 
+on state-of-the-art NLP models including BERT and GPT, and propose a few defenses to protect
+models against privacy leaks.
+\textit{McMahan~et~al.} \cite{mcmahan2017learning} and \textit{Li~et~al.} \cite{li2019dp} propose methods
+for training differentially private recurrent neural language models. 
+Finally, \textit{Adelani~et~al.} \cite{adelani2020privacy} derive formal privacy guarantees
+for a general text de-identification method.
+
+\newpage
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
