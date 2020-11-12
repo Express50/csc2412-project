@@ -15,4 +15,5 @@ to achieve highest accuracy, but to show tradeoff with privacy)
    - Need to look into adding DP on top of these models in an easy manner:
      - in TF, this is done using https://github.com/tensorflow/privacy
      - in pytorch, we can try using: https://github.com/pytorch/opacus
-
+         - in particular, we can check out: https://github.com/Darktex/opacus/blob/master/examples/imdb.py
+         - torchtext has builtin datasets for various tasks: https://pytorch.org/text/datasets.html
