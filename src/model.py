@@ -3,7 +3,6 @@ from torch.nn.modules.activation import ReLU
 from torch.nn.modules.dropout import Dropout
 from torch.nn.modules.linear import Linear
 from torch.nn.modules.module import Module
-
 from transformers import AutoConfig, AutoModel
 
 
