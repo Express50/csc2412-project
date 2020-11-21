@@ -71,6 +71,7 @@ def evaluate(model: SentimentAnalysisModel, test_loader: DataLoader, device_: de
 
 
 if __name__ == "__main__":
+    import gc
     import argparse
 
     parser = argparse.ArgumentParser()
@@ -80,6 +81,7 @@ if __name__ == "__main__":
 
     torch.manual_seed(1234)
     
+    print(f'cuda available: {torch.cuda.is_available()}')
     device_ = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
     # load datasets
@@ -87,7 +89,7 @@ if __name__ == "__main__":
     sentiment_data = pd.read_csv('../data/rotten/train.tsv', delimiter='\t')[['Phrase', 'Sentiment']]
 
     if args.debug:
-        sentiment_data = sentiment_data.sample(n=100)
+        sentiment_data = sentiment_data.sample(n=5000)
 
     train_data = sentiment_data.sample(frac=0.8)
     test_data = sentiment_data.drop(train_data.index).reset_index(drop=True)
@@ -99,13 +101,13 @@ if __name__ == "__main__":
 
     train_iterator = DataLoader(
         train_set,
-        batch_size=4,
+        batch_size=16,
         shuffle=True
     )
 
     test_iterator = DataLoader(
         test_set,
-        batch_size=4,
+        batch_size=16,
         shuffle=True
     )
 
@@ -115,7 +117,10 @@ if __name__ == "__main__":
 
     # TODO: attach DP to optimizer
 
-    print('Training model...')
-    for epoch in range(50):
-        train(model, train_iterator, optimizer, epoch, device_)
-        evaluate(model, test_iterator, device_)
+    try:
+        print('Training model...')
+        for epoch in range(10):
+                train(model, train_iterator, optimizer, epoch, device_)
+                evaluate(model, test_iterator, device_)
+    except RuntimeError as e:
+        print(e)
