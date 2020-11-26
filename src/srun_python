@@ -1,0 +1,1 @@
+srun --partition biggpunodes --nodelist gpunode16 -c 4 --gres=gpu:2 --mem=4G python3 train.py [params]

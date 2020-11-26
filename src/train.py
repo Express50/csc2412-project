@@ -18,6 +18,8 @@ from datasets import load_dataset
 from data import SentimentData
 from model import SentimentAnalysisModel
 
+import os 
+os.environ['TRANSFORMERS_CACHE'] = '/w/246/landsmand/csc2412-project/transformers/'
 
 def binary_accuracy(predictions, label):
     correct = (label.long() == torch.argmax(predictions, dim=1)).float()

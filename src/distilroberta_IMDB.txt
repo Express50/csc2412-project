@@ -1,0 +1,24 @@
+cuda available: True
+Loading data...
+Running tokenizer...
+Training model...
+Train epoch: 0 	 Avg Loss: 0.27120873984485694 	 Avg Accuracy: 0.8850367882277671
+Test: Avg Loss: 0.1981676201868185 	 Avg Accuracy: 0.9200255918106206
+Train epoch: 1 	 Avg Loss: 0.18489258847797024 	 Avg Accuracy: 0.9291826615483045
+Test: Avg Loss: 0.1914775743401268 	 Avg Accuracy: 0.9231445937300063
+Train epoch: 2 	 Avg Loss: 0.13256570738451276 	 Avg Accuracy: 0.9529750479846449
+Test: Avg Loss: 0.2046853662282288 	 Avg Accuracy: 0.9222648752399232
+Train epoch: 3 	 Avg Loss: 0.09486203870252824 	 Avg Accuracy: 0.9676103646833013
+Test: Avg Loss: 0.23721891131117387 	 Avg Accuracy: 0.9225847728726807
+Train epoch: 4 	 Avg Loss: 0.06412634715789146 	 Avg Accuracy: 0.9794465770953295
+Test: Avg Loss: 0.25576129039028217 	 Avg Accuracy: 0.9249840051183621
+Train epoch: 5 	 Avg Loss: 0.04758355197056822 	 Avg Accuracy: 0.9846849008317339
+Test: Avg Loss: 0.27031463380377235 	 Avg Accuracy: 0.9239443378119002
+Train epoch: 6 	 Avg Loss: 0.040756633794066265 	 Avg Accuracy: 0.9858845169545746
+Test: Avg Loss: 0.26471602572522374 	 Avg Accuracy: 0.9249840051183621
+Train epoch: 7 	 Avg Loss: 0.030458112293783597 	 Avg Accuracy: 0.9906829814459372
+Test: Avg Loss: 0.305172694766631 	 Avg Accuracy: 0.9208253358925144
+Train epoch: 8 	 Avg Loss: 0.024720054902565715 	 Avg Accuracy: 0.9920825335892515
+Test: Avg Loss: 0.3289410609647237 	 Avg Accuracy: 0.9264635316698656
+Train epoch: 9 	 Avg Loss: 0.022025967349755208 	 Avg Accuracy: 0.9933221369161869
+Test: Avg Loss: 0.3394364818284271 	 Avg Accuracy: 0.9194257837492003
