@@ -1,4 +1,7 @@
 # Adapted from: https://github.com/pytorch/opacus/blob/a2419eba1dddd3235d6ddd374e3f9afe4a61a7f5/examples/imdb.py
+import os 
+os.environ['TRANSFORMERS_CACHE'] = '/w/246/landsmand/csc2412-project/transformers/'
+
 import numpy as np
 import pandas as pd
 import torch
@@ -17,9 +20,6 @@ from datasets import load_dataset
 
 from data import SentimentData
 from model import SentimentAnalysisModel
-
-import os 
-os.environ['TRANSFORMERS_CACHE'] = '/w/246/landsmand/csc2412-project/transformers/'
 
 def binary_accuracy(predictions, label):
     correct = (label.long() == torch.argmax(predictions, dim=1)).float()
