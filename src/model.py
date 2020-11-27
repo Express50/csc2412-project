@@ -7,6 +7,10 @@ from transformers import AutoConfig, AutoModel
 
 
 import inspect
+from transformers.modeling_distilbert import DistilBertModel
+
+from transformers.modeling_gpt2 import GPT2Model
+from transformers.modeling_t5 import T5Model
 
 def get_args(func):
     sig = inspect.signature(func)
@@ -26,6 +30,25 @@ class SentimentAnalysisModel(Module):
         config = AutoConfig.from_pretrained(model_name)
 
         self.transformer = AutoModel.from_pretrained(model_name)
+
+        # freeze all but last layer of transformer
+        layers_to_freeze = None
+        frozen_params = 0
+        if type(self.transformer) is GPT2Model:
+            layers_to_freeze = self.transformer.h[:-1]
+        elif type(self.transformer) is DistilBertModel:
+            layers_to_freeze = self.transformer.transformer.layer[:-1]
+        elif type(self.transformer) is T5Model:
+            layers_to_freeze = self.transformer.encoder.block[:-1]
+            layers_to_freeze.extend(self.transformer.decoder.block[:-1])
+
+        for layer in layers_to_freeze:
+            for param in layer.parameters():
+                param.requires_grad = False
+                frozen_params += param.numel()
+
+        print(f'Init model: frozen {frozen_params} params.')
+
         self.pre_classifier = Linear(config.hidden_size, config.hidden_size)
         self.dropout = Dropout(0.3)
         self.classifier = Linear(config.hidden_size, output_dim)
@@ -58,5 +81,7 @@ class SentimentAnalysisModel(Module):
         return output
 
 
-# if __name__ == "__main__":
-#     SentimentAnalysisModel('roberta-base', 5)
+if __name__ == "__main__":
+    model = SentimentAnalysisModel('distilgpt2', 5)
+
+    print(type(model.transformer))
