@@ -18,7 +18,7 @@ def get_args(func):
 
     return kwargs
 
-
+# TODO: may need to freeze all but top layers of transformer for lower mem
 class SentimentAnalysisModel(Module):
     def __init__(self, model_name: str, output_dim: int) -> None:
         super(SentimentAnalysisModel, self).__init__()

@@ -16,10 +16,16 @@ from transformers import AutoTokenizer
 import torchcsprng as prng
 import datasets
 from datasets import load_dataset
-# opacus
+from opacus import PrivacyEngine
 
 from data import SentimentData
 from model import SentimentAnalysisModel
+
+# flag to stop training when we hit epsilon threshold
+eps_threshold_hit = False
+
+BATCH_SIZE = 2
+VIRTUAL_BATCH_SIZE = 32
 
 def binary_accuracy(predictions, label):
     correct = (label.long() == torch.argmax(predictions, dim=1)).float()
@@ -37,14 +43,18 @@ def padded_collate(batch, padding_idx=0):
     return x, y
 
 
-def train(model: SentimentAnalysisModel, train_loader: DataLoader,
+def train(args, model: SentimentAnalysisModel, train_loader: DataLoader,
           optimizer: Optimizer, epoch: int, device_: device):
+    global eps_threshold_hit
+    
     model = model.train().to(device_)
     criterion = nn.CrossEntropyLoss()
     losses = []
     accuracies = []
 
-    for batch in tqdm(train_loader):
+    virtual_batch_rate = VIRTUAL_BATCH_SIZE / BATCH_SIZE
+
+    for idx, batch in enumerate(tqdm(train_loader)):
         ids = batch['input_ids'].to(device_, dtype = torch.long)
         mask = batch['attention_mask'].to(device_, dtype = torch.long)
         token_type_ids = batch['token_type_ids'].to(device_, dtype = torch.long)
@@ -56,13 +66,37 @@ def train(model: SentimentAnalysisModel, train_loader: DataLoader,
         acc = binary_accuracy(predictions, targets)
 
         loss.backward()
-        optimizer.step()
+
+        if args.eps_threshold is not None:
+            # do virtual stepping to improve performance
+            if (idx + 1) % virtual_batch_rate == 0 or idx == len(train_loader) - 1:
+                optimizer.step()
+                optimizer.zero_grad()
+            else:
+                optimizer.virtual_step()
+        else:
+            optimizer.step()
 
         losses.append(loss.item())
         accuracies.append(acc.item())
 
-    # TODO: add DP reporting
-    print(f'Train epoch: {epoch} \t Avg Loss: {np.mean(losses)} \t Avg Accuracy: {np.mean(accuracies)}')
+    if args.eps_threshold is not None:
+        epsilon, best_alpha = optimizer.privacy_engine.get_privacy_spent()
+        print(
+            f"Train Epoch: {epoch} \t"
+            f"Train Loss: {np.mean(losses):.6f} "
+            f"Train Accuracy: {np.mean(accuracies):.6f} "
+            f"(ε = {epsilon:.2f}, δ = {1e-06}) for α = {best_alpha}"
+        )
+
+        # stop training if eps >= eps_threshold
+        eps_threshold_hit = epsilon >= args.eps_threshold
+
+        if eps_threshold_hit:
+            print('Hit epsilon threshold, stopping training.')
+
+    else:
+        print(f'Train epoch: {epoch} \t Avg Loss: {np.mean(losses)} \t Avg Accuracy: {np.mean(accuracies)}')
 
 
 def evaluate(model: SentimentAnalysisModel, test_loader: DataLoader, device_: device):
@@ -94,6 +128,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument('model', default='roberta-base', nargs='?')
+    parser.add_argument('eps_threshold', default=None, type=float, nargs='?')
     parser.add_argument('--debug', action='store_true', default=False)
     args = parser.parse_args()
 
@@ -107,12 +142,16 @@ if __name__ == "__main__":
     raw_dataset = load_dataset("imdb", cache_dir="/w/246/landsmand/csc2412-project/imdb")
     raw_dataset["unsupervised"] = raw_dataset["unsupervised"].select(range(10))
     
-    DEBUG_TRAIN_SIZE = 1000
-    DEBUG_TEST_SIZE = 500
+    epochs = 10
+
+    DEBUG_TRAIN_SIZE = 100
+    DEBUG_TEST_SIZE = 5
+    DEBUG_EPOCHS = 3
 
     if args.debug:
         raw_dataset["train"] = raw_dataset["train"].select(range(DEBUG_TRAIN_SIZE))
         raw_dataset["test"] = raw_dataset["test"].select(range(DEBUG_TEST_SIZE))
+        epochs = DEBUG_EPOCHS
 
     print('Running tokenizer...')
     tokenizer = AutoTokenizer.from_pretrained(args.model)
@@ -134,7 +173,12 @@ if __name__ == "__main__":
 
     generator = (None)
 
+    
+    
     batch_size = 16
+    if args.eps_threshold is not None:
+        batch_size = BATCH_SIZE
+
     workers = 2
 
     train_loader = DataLoader(
@@ -157,12 +201,29 @@ if __name__ == "__main__":
     model = SentimentAnalysisModel(args.model, 2).to(device_)
     optimizer = optim.Adam(model.parameters(), lr=1e-05)
 
-    # TODO: attach DP to optimizer
+    # attach DP to optimizer
+    sigma = 0.56
+    max_grad_norm = 1.0
+    if args.eps_threshold is not None:
+        print('Attaching privacy engine...')
+        privacy_engine = PrivacyEngine(
+            model,
+            batch_size = VIRTUAL_BATCH_SIZE,
+            sample_size = len(train_dataset),
+            alphas = [1 + x / 10.0 for x in range(1, 100)] + list(range(12, 64)),
+            noise_multiplier = sigma,
+            max_grad_norm = max_grad_norm
+        )
+        privacy_engine.attach(optimizer)
 
     try:
         print('Training model...')
-        for epoch in range(10):
-                train(model, train_loader, optimizer, epoch, device_)
-                evaluate(model, test_loader, device_)
+        for epoch in range(epochs):
+            if not eps_threshold_hit:
+                train(args, model, train_loader, optimizer, epoch, device_)
+            evaluate(model, test_loader, device_)
+
+            if eps_threshold_hit: break
+
     except RuntimeError as e:
         print(e)
