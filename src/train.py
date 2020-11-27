@@ -24,8 +24,8 @@ from model import SentimentAnalysisModel
 # flag to stop training when we hit epsilon threshold
 eps_threshold_hit = False
 
-BATCH_SIZE = 2
-VIRTUAL_BATCH_SIZE = 32
+BATCH_SIZE = 4
+VIRTUAL_BATCH_SIZE = 16
 
 def binary_accuracy(predictions, label):
     correct = (label.long() == torch.argmax(predictions, dim=1)).float()
@@ -159,7 +159,7 @@ if __name__ == "__main__":
         lambda x: tokenizer(
             x["text"], 
             truncation=True, 
-            max_length=256, 
+            max_length=64, 
             return_token_type_ids=True, 
             add_special_tokens=True,
             pad_to_max_length=True
@@ -175,7 +175,7 @@ if __name__ == "__main__":
 
     
     
-    batch_size = 16
+    batch_size = 32
     if args.eps_threshold is not None:
         batch_size = BATCH_SIZE
 
@@ -202,7 +202,7 @@ if __name__ == "__main__":
     optimizer = optim.Adam(model.parameters(), lr=1e-05)
 
     # attach DP to optimizer
-    sigma = 0.56
+    sigma = 0.5
     max_grad_norm = 1.0
     if args.eps_threshold is not None:
         print('Attaching privacy engine...')
@@ -219,11 +219,11 @@ if __name__ == "__main__":
     try:
         print('Training model...')
         for epoch in range(epochs):
-            if not eps_threshold_hit:
-                train(args, model, train_loader, optimizer, epoch, device_)
+            # if not eps_threshold_hit:
+            train(args, model, train_loader, optimizer, epoch, device_)
             evaluate(model, test_loader, device_)
 
-            if eps_threshold_hit: break
+            # if eps_threshold_hit: break
 
     except RuntimeError as e:
         print(e)
