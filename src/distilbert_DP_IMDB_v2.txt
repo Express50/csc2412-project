@@ -1,0 +1,28 @@
+## distilbert -- DP with sigma=0.1 -- max_length=64 -- frozen params
+
+cuda available: True
+Loading data...
+Running tokenizer...
+Init model: frozen 28351488 params.
+Attaching privacy engine...
+Training model...
+Train Epoch: 0 	Train Loss: 0.695419 Train Accuracy: 0.505040 (ε = 1259.18, δ = 1e-06) for α = 1.1
+Test: Avg Loss: 0.6906072504329681 	 Avg Accuracy: 0.50036
+Train Epoch: 1 	Train Loss: 0.690040 Train Accuracy: 0.527880 (ε = 2380.21, δ = 1e-06) for α = 1.1
+Test: Avg Loss: 0.6854694650745392 	 Avg Accuracy: 0.60964
+Train Epoch: 2 	Train Loss: 0.685543 Train Accuracy: 0.556840 (ε = 3501.24, δ = 1e-06) for α = 1.1
+Test: Avg Loss: 0.6811327196216583 	 Avg Accuracy: 0.57332
+Train Epoch: 3 	Train Loss: 0.679669 Train Accuracy: 0.593760 (ε = 4622.27, δ = 1e-06) for α = 1.1
+Test: Avg Loss: 0.6741917645645141 	 Avg Accuracy: 0.65484
+Train Epoch: 4 	Train Loss: 0.672631 Train Accuracy: 0.637320 (ε = 5743.30, δ = 1e-06) for α = 1.1
+Test: Avg Loss: 0.664672185306549 	 Avg Accuracy: 0.71056
+Train Epoch: 5 	Train Loss: 0.662953 Train Accuracy: 0.668720 (ε = 6864.33, δ = 1e-06) for α = 1.1
+Test: Avg Loss: 0.6524100982189178 	 Avg Accuracy: 0.7086
+Train Epoch: 6 	Train Loss: 0.649281 Train Accuracy: 0.690120 (ε = 7985.36, δ = 1e-06) for α = 1.1
+Test: Avg Loss: 0.6352493238449096 	 Avg Accuracy: 0.71584
+Train Epoch: 7 	Train Loss: 0.631531 Train Accuracy: 0.703640 (ε = 9106.39, δ = 1e-06) for α = 1.1
+Test: Avg Loss: 0.6142844349336624 	 Avg Accuracy: 0.72016
+Train Epoch: 8 	Train Loss: 0.611943 Train Accuracy: 0.702480 (ε = 10227.41, δ = 1e-06) for α = 1.1
+Test: Avg Loss: 0.5946485060071945 	 Avg Accuracy: 0.7098
+Train Epoch: 9 	Train Loss: 0.593402 Train Accuracy: 0.699360 (ε = 11348.44, δ = 1e-06) for α = 1.1
+Test: Avg Loss: 0.5684803349685669 	 Avg Accuracy: 0.7226
