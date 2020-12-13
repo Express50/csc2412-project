@@ -165,7 +165,7 @@ if __name__ == "__main__":
             max_length=64, 
             return_token_type_ids=True, 
             add_special_tokens=True,
-            pad_to_max_length=True
+            pad_to_max_length= (args.model != 'distilgpt2')
         ),
         batched=True,
     )
