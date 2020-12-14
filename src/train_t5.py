@@ -21,11 +21,30 @@ from opacus import PrivacyEngine
 from data import SentimentData
 from model import SentimentAnalysisModel
 
+from transformers.modeling_t5 import T5LayerNorm
+
 # flag to stop training when we hit epsilon threshold
 eps_threshold_hit = False
 
 BATCH_SIZE = 4
 VIRTUAL_BATCH_SIZE = 16
+
+def convert_layers(model, layer_type_old, layer_type_new, convert_weights=False, num_groups=None):
+    for name, module in reversed(model._modules.items()):
+        if len(list(module.children())) > 0:
+            # Recursion.
+            model._modules[name] = convert_layers(module, layer_type_old, layer_type_new, convert_weights)
+        if type(module) == layer_type_old:
+            layer_old = module
+            # If num_groups is None, GroupNorm turns into InstanceNorm
+            # If num_groups is 1, GroupNorm turns into LayerNorm. 
+            # layer_new = layer_type_new(module.num_features if num_groups is None else num_groups, module.num_features, module.eps, module.affine) 
+            layer_new = layer_type_new(module.weight.size(), module.variance_epsilon) 
+            if convert_weights:
+                layer_new.weight = layer_old.weight
+                layer_new.bias = layer_old.bias
+            model._modules[name] = layer_new
+    return model
 
 def binary_accuracy(predictions, label):
     correct = (label.long() == torch.argmax(predictions, dim=1)).float()
@@ -224,6 +243,10 @@ if __name__ == "__main__":
 
     # init model
     model = SentimentAnalysisModel(args.model, 2).to(device_)
+
+    # convert layer norms to type usable by opacus
+    model = convert_layers(model, T5LayerNorm, nn.LayerNorm)
+
     optimizer = optim.Adam(model.parameters(), lr=1e-05)
 
     # attach DP to optimizer
