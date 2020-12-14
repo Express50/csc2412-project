@@ -42,6 +42,7 @@ class SentimentAnalysisModel(Module):
         elif type(self.transformer) is T5Model:
             layers_to_freeze = self.transformer.encoder.block[:-1]
             layers_to_freeze.extend(self.transformer.decoder.block[:-1])
+            layers_to_freeze.extend([self.transformer.shared])
 
         for layer in layers_to_freeze:
             for param in layer.parameters():
