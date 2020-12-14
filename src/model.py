@@ -1,3 +1,4 @@
+from json import decoder
 from torch import Tensor
 from torch.nn.modules.activation import ReLU
 from torch.nn.modules.dropout import Dropout
@@ -53,12 +54,13 @@ class SentimentAnalysisModel(Module):
         self.dropout = Dropout(0.3)
         self.classifier = Linear(config.hidden_size, output_dim)
 
-    def forward(self, input_ids, attention_mask, token_type_ids) -> Tensor:
+    def forward(self, input_ids=None, attention_mask=None, token_type_ids=None, decoder_input_ids=None) -> Tensor:
         # Some models don't require token_type_ids, so only pass supported args to forward()
         all_args = {
             'input_ids': input_ids,
             'attention_mask': attention_mask,
-            'token_type_ids': token_type_ids
+            'token_type_ids': token_type_ids,
+            'decoder_input_ids': decoder_input_ids
         }
 
         supported_args = get_args(self.transformer.forward)
@@ -66,6 +68,8 @@ class SentimentAnalysisModel(Module):
         for arg in supported_args:
             if arg in all_args:
                 args[arg] = all_args[arg]
+
+        print(args)
 
 
         transformer_output = self.transformer(**args)
