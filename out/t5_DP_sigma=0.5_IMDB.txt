@@ -1,0 +1,30 @@
+cuda available: True
+Loading data...
+Running tokenizer...
+Dataset({
+    features: ['attention_mask', 'attention_mask_label', 'decoder_input_ids', 'input_ids', 'label', 'label_text', 'text'],
+    num_rows: 25000
+})
+Init model: frozen 53163264 params.
+Attaching privacy engine...
+Training model...
+Train Epoch: 0 	Train Loss: 0.744961 Train Accuracy: 0.450640 (ε = 5.64, δ = 1e-06) for α = 3.7
+Test: Avg Loss: 0.747067067489624 	 Avg Accuracy: 0.45192
+Train Epoch: 1 	Train Loss: 0.745433 Train Accuracy: 0.451520 (ε = 6.01, δ = 1e-06) for α = 3.6
+Test: Avg Loss: 0.7458891379261017 	 Avg Accuracy: 0.4572
+Train Epoch: 2 	Train Loss: 0.743772 Train Accuracy: 0.456760 (ε = 6.26, δ = 1e-06) for α = 3.5
+Test: Avg Loss: 0.7444194797706604 	 Avg Accuracy: 0.4544
+Train Epoch: 3 	Train Loss: 0.743748 Train Accuracy: 0.459560 (ε = 6.49, δ = 1e-06) for α = 3.4
+Test: Avg Loss: 0.7429555360031128 	 Avg Accuracy: 0.45776
+Train Epoch: 4 	Train Loss: 0.741931 Train Accuracy: 0.458880 (ε = 6.67, δ = 1e-06) for α = 3.4
+Test: Avg Loss: 0.7418001808834076 	 Avg Accuracy: 0.46336
+Train Epoch: 5 	Train Loss: 0.740920 Train Accuracy: 0.460680 (ε = 6.86, δ = 1e-06) for α = 3.4
+Test: Avg Loss: 0.7390237022686005 	 Avg Accuracy: 0.45704
+Train Epoch: 6 	Train Loss: 0.740216 Train Accuracy: 0.460120 (ε = 7.01, δ = 1e-06) for α = 3.3
+Test: Avg Loss: 0.737141759634018 	 Avg Accuracy: 0.4584
+Train Epoch: 7 	Train Loss: 0.737356 Train Accuracy: 0.465200 (ε = 7.15, δ = 1e-06) for α = 3.3
+Test: Avg Loss: 0.7362798156547546 	 Avg Accuracy: 0.4618
+Train Epoch: 8 	Train Loss: 0.737033 Train Accuracy: 0.464600 (ε = 7.30, δ = 1e-06) for α = 3.3
+Test: Avg Loss: 0.734314082942009 	 Avg Accuracy: 0.4632
+Train Epoch: 9 	Train Loss: 0.733756 Train Accuracy: 0.468480 (ε = 7.44, δ = 1e-06) for α = 3.3
+Test: Avg Loss: 0.7318808373069763 	 Avg Accuracy: 0.46296

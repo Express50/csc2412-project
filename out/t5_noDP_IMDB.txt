@@ -1,0 +1,29 @@
+cuda available: True
+Loading data...
+Running tokenizer...
+Dataset({
+    features: ['attention_mask', 'attention_mask_label', 'decoder_input_ids', 'input_ids', 'label', 'label_text', 'text'],
+    num_rows: 25000
+})
+Init model: frozen 53163264 params.
+Training model...
+Train epoch: 0 	 Avg Loss: 0.4674072541925303 	 Avg Accuracy: 0.8461876598465473
+Test: Avg Loss: 0.14153877561888123 	 Avg Accuracy: 0.9985613810741688
+Train epoch: 1 	 Avg Loss: 0.1500753054914572 	 Avg Accuracy: 0.9839753836317136
+Test: Avg Loss: 0.024832370567738134 	 Avg Accuracy: 0.9997602301790282
+Train epoch: 2 	 Avg Loss: 0.06409269211399357 	 Avg Accuracy: 0.9914482097186701
+Test: Avg Loss: 0.00827864421438664 	 Avg Accuracy: 0.9999200767263428
+Train epoch: 3 	 Avg Loss: 0.03954786461625544 	 Avg Accuracy: 0.993366368286445
+Test: Avg Loss: 0.0037409577061972388 	 Avg Accuracy: 0.9999600383631714
+Train epoch: 4 	 Avg Loss: 0.029355659850460986 	 Avg Accuracy: 0.9935262148337596
+Test: Avg Loss: 0.002049026902868648 	 Avg Accuracy: 0.9999200767263428
+Train epoch: 5 	 Avg Loss: 0.02259614205826312 	 Avg Accuracy: 0.9954843350383632
+Test: Avg Loss: 0.0013282047141442875 	 Avg Accuracy: 0.9999200767263428
+Train epoch: 6 	 Avg Loss: 0.019429952781924338 	 Avg Accuracy: 0.9956841432225064
+Test: Avg Loss: 0.0008471505463878012 	 Avg Accuracy: 0.9999600383631714
+Train epoch: 7 	 Avg Loss: 0.016831230407025752 	 Avg Accuracy: 0.9956042199488491
+Test: Avg Loss: 0.0005819265013420344 	 Avg Accuracy: 0.9999600383631714
+Train epoch: 8 	 Avg Loss: 0.014247407684201801 	 Avg Accuracy: 0.9964833759590793
+Test: Avg Loss: 0.00045363949348983253 	 Avg Accuracy: 0.9999600383631714
+Train epoch: 9 	 Avg Loss: 0.01370907559573455 	 Avg Accuracy: 0.9961237212276215
+Test: Avg Loss: 0.0003508441846515966 	 Avg Accuracy: 0.9999600383631714
