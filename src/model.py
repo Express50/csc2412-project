@@ -37,6 +37,10 @@ class SentimentAnalysisModel(Module):
         frozen_params = 0
         if type(self.transformer) is GPT2Model:
             layers_to_freeze = self.transformer.h[:-1]
+            layers_to_freeze.extend([self.transformer.h[-1].mlp])
+            layers_to_freeze.extend([self.transformer.h[-1].attn])
+            layers_to_freeze.extend([self.transformer.wte])
+            layers_to_freeze.extend([self.transformer.wpe])
         elif type(self.transformer) is DistilBertModel:
             layers_to_freeze = self.transformer.transformer.layer[:-1]
         elif type(self.transformer) is T5Model:
@@ -69,9 +73,6 @@ class SentimentAnalysisModel(Module):
         for arg in supported_args:
             if arg in all_args:
                 args[arg] = all_args[arg]
-
-        print(args)
-
 
         transformer_output = self.transformer(**args)
 
