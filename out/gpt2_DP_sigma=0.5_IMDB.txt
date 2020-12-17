@@ -1,0 +1,26 @@
+cuda available: True
+Loading data...
+Running tokenizer...
+Init model: frozen 81892608 params.
+Attaching privacy engine...
+Training model...
+Train Epoch: 0 	Train Loss: 1.348308 Train Accuracy: 0.499040 (ε = 5.64, δ = 1e-06) for α = 3.7
+Test: Avg Loss: 0.9128269735860824 	 Avg Accuracy: 0.50112
+Train Epoch: 1 	Train Loss: 1.540993 Train Accuracy: 0.505560 (ε = 6.01, δ = 1e-06) for α = 3.6
+Test: Avg Loss: 1.332356470504999 	 Avg Accuracy: 0.5
+Train Epoch: 2 	Train Loss: 1.803291 Train Accuracy: 0.496680 (ε = 6.26, δ = 1e-06) for α = 3.5
+Test: Avg Loss: 0.6958822756767273 	 Avg Accuracy: 0.50708
+Train Epoch: 3 	Train Loss: 1.934870 Train Accuracy: 0.498680 (ε = 6.49, δ = 1e-06) for α = 3.4
+Test: Avg Loss: 0.7071359188127517 	 Avg Accuracy: 0.49816
+Train Epoch: 4 	Train Loss: 1.901030 Train Accuracy: 0.502280 (ε = 6.67, δ = 1e-06) for α = 3.4
+Test: Avg Loss: 0.7193821934795379 	 Avg Accuracy: 0.5092
+Train Epoch: 5 	Train Loss: 1.912636 Train Accuracy: 0.503600 (ε = 6.86, δ = 1e-06) for α = 3.4
+Test: Avg Loss: 1.1874826714479922 	 Avg Accuracy: 0.5
+Train Epoch: 6 	Train Loss: 1.843096 Train Accuracy: 0.504640 (ε = 7.01, δ = 1e-06) for α = 3.3
+Test: Avg Loss: 0.907796062887907 	 Avg Accuracy: 0.50096
+Train Epoch: 7 	Train Loss: 1.886070 Train Accuracy: 0.504200 (ε = 7.15, δ = 1e-06) for α = 3.3
+Test: Avg Loss: 0.8560877969455719 	 Avg Accuracy: 0.50008
+Train Epoch: 8 	Train Loss: 1.887198 Train Accuracy: 0.497480 (ε = 7.30, δ = 1e-06) for α = 3.3
+Test: Avg Loss: 0.7113325641345978 	 Avg Accuracy: 0.51344
+Train Epoch: 9 	Train Loss: 1.777021 Train Accuracy: 0.498360 (ε = 7.44, δ = 1e-06) for α = 3.3
+Test: Avg Loss: 0.7081926804828644 	 Avg Accuracy: 0.51088

@@ -1,0 +1,36 @@
+cuda available: True
+Loading data...
+Running tokenizer...
+Init model: frozen 81892608 params.
+Attaching privacy engine...
+Training model...
+Train Epoch: 0 	Train Loss: 1.264300 Train Accuracy: 0.494960 (ε = 1259.18, δ = 1e-06) for α = 1.1
+Hit epsilon threshold, stopping training.
+Test: Avg Loss: 1.1401955553495884 	 Avg Accuracy: 0.5022
+Train Epoch: 1 	Train Loss: 1.208548 Train Accuracy: 0.500080 (ε = 2380.21, δ = 1e-06) for α = 1.1
+Hit epsilon threshold, stopping training.
+Test: Avg Loss: 1.64992531401217 	 Avg Accuracy: 0.50264
+Train Epoch: 2 	Train Loss: 1.257239 Train Accuracy: 0.498360 (ε = 3501.24, δ = 1e-06) for α = 1.1
+Hit epsilon threshold, stopping training.
+Test: Avg Loss: 0.8195992214620114 	 Avg Accuracy: 0.5
+Train Epoch: 3 	Train Loss: 1.135286 Train Accuracy: 0.495560 (ε = 4622.27, δ = 1e-06) for α = 1.1
+Hit epsilon threshold, stopping training.
+Test: Avg Loss: 0.8800692806303501 	 Avg Accuracy: 0.5
+Train Epoch: 4 	Train Loss: 1.220285 Train Accuracy: 0.506320 (ε = 5743.30, δ = 1e-06) for α = 1.1
+Hit epsilon threshold, stopping training.
+Test: Avg Loss: 1.1376788476014137 	 Avg Accuracy: 0.5
+Train Epoch: 5 	Train Loss: 1.184377 Train Accuracy: 0.501240 (ε = 6864.33, δ = 1e-06) for α = 1.1
+Hit epsilon threshold, stopping training.
+Test: Avg Loss: 1.5661827317401766 	 Avg Accuracy: 0.5
+Train Epoch: 6 	Train Loss: 1.227883 Train Accuracy: 0.500840 (ε = 7985.36, δ = 1e-06) for α = 1.1
+Hit epsilon threshold, stopping training.
+Test: Avg Loss: 0.8367800437033176 	 Avg Accuracy: 0.5
+Train Epoch: 7 	Train Loss: 1.285708 Train Accuracy: 0.500280 (ε = 9106.39, δ = 1e-06) for α = 1.1
+Hit epsilon threshold, stopping training.
+Test: Avg Loss: 1.094146580249071 	 Avg Accuracy: 0.50148
+Train Epoch: 8 	Train Loss: 1.266594 Train Accuracy: 0.499920 (ε = 10227.41, δ = 1e-06) for α = 1.1
+Hit epsilon threshold, stopping training.
+Test: Avg Loss: 1.1065299168503284 	 Avg Accuracy: 0.5
+Train Epoch: 9 	Train Loss: 1.169203 Train Accuracy: 0.498360 (ε = 11348.44, δ = 1e-06) for α = 1.1
+Hit epsilon threshold, stopping training.
+Test: Avg Loss: 0.7450662737846374 	 Avg Accuracy: 0.50212
