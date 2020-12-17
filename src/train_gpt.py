@@ -130,8 +130,8 @@ if __name__ == "__main__":
     
     epochs = 10
 
-    DEBUG_TRAIN_SIZE = 50
-    DEBUG_TEST_SIZE = 5
+    DEBUG_TRAIN_SIZE = 100
+    DEBUG_TEST_SIZE = 100
     DEBUG_EPOCHS = 3
 
     if args.debug:
@@ -141,11 +141,17 @@ if __name__ == "__main__":
 
     print('Running tokenizer...')
     tokenizer = AutoTokenizer.from_pretrained(args.model)
+    # add padding token manually since GPT2 doesn't pad by default
+    # also specify padding on the left, since GPT2 model predicts next word
+    tokenizer.pad_token = tokenizer.eos_token
+    tokenizer.padding_side = 'left'
+
     dataset = raw_dataset.map(
         lambda x: tokenizer(
             x["text"], 
             truncation=True, 
-            max_length=64
+            max_length=64,
+            padding='max_length'
         ),
         batched=True,
     )
